@@ -87,15 +87,15 @@
     - metallb_setup
     - inventory_hostname in (groups['primary'] | default([]))
 
-- name: Include client-to-cluster tunnel tasks
-  include_tasks:
-    file: client_cluster_tunnel.yaml
-  when: (groups['primary'] | difference(groups['k8s_control_plane']) | length > 0)
-
-- name: Include client-to-cluster ssh key tasks
-  include_tasks:
-    file: client_cluster_ssh.yaml
-  when: client_cluster_ssh_setup
+#- name: Include client-to-cluster tunnel tasks
+#  include_tasks:
+#    file: client_cluster_tunnel.yaml
+#  when: (groups['primary'] | difference(groups['k8s_control_plane']) | length > 0)
+#
+#- name: Include client-to-cluster ssh key tasks
+#  include_tasks:
+#    file: client_cluster_ssh.yaml
+#  when: client_cluster_ssh_setup
 
 - name: Include ingress tasks
   include_tasks:
